@@ -1,0 +1,6 @@
+config MT7610U
+	tristate "MediaTek MT710 (USB) support"
+	depends on MAC80211
+	depends on USB
+	---help---
+	  This adds support for MT7610U-based wireless USB dongles.
