@@ -350,7 +350,7 @@ mt76x0_phy_set_band(struct mt76x0_dev *dev, enum nl80211_band band)
 static void
 mt76x0_phy_set_chan_rf_params(struct mt76x0_dev *dev, u8 channel, u16 rf_bw_band)
 {
-	u16 rf_band = rf_bw_band & 0xff00;
+	u16 rf_band;
 	u16 rf_bw = rf_bw_band & 0x00ff;
 	u32 mac_reg;
 	u8 rf_val;
@@ -367,6 +367,7 @@ mt76x0_phy_set_chan_rf_params(struct mt76x0_dev *dev, u8 channel, u16 rf_bw_band
 
 	for (i = 0; i < ARRAY_SIZE(mt76x0_frequency_plan); i++) {
 		if (channel == mt76x0_frequency_plan[i].channel) {
+			rf_band = mt76x0_frequency_plan[i].band;
 
 			if (bSDM)
 				freq_item = &(mt76x0_sdm_frequency_plan[i]);
